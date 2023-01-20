@@ -2,27 +2,26 @@
 {% load static %}
 <html lang="en">
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <a href="#" class="pull-left"><img src='{% static "ClassApp/CBSLogo.png" %}'></a>
-        <a class="navbar-brand" href="#">Pantry Chef</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
 <head>
-    <meta charset="UTF-8">
-    <title>Pantry Chef</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset:"UTF-8">
+    <title>Chefs Pantry</title>
     <link rel="stylesheet" href="{% static 'ClassApp/style.css' %}">
+
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#about">Login</a>
+</div>
+    <span style="float:right;">
+    {% if user.username %}
+        <span class="large-font">Hello {{ user.username }}!</span><br>
+        <a href="{% url 'logout' %}"><button>logout</button></a>
+    {% else %}
+        <span class="large-font">Hello Guest User!</span><br>
+        <a href="{% url 'login' %}"><button>login</button></a>/
+        <a href="{% url 'register_user' %}"><button>register</button></a>
+    {% endif %}
+</span>
+
 </head>
 
 <body>
