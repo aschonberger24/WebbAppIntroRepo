@@ -13,7 +13,8 @@ def import_from_menu():
             all_recipes.append(this_recipe)
         print(this_recipe)
         # to save to database: this_recipe.save()
-    # to save entire list to database: for i in all_recipes:   i.save()
+    # to save entire list to database: for i in all_recipes:
+    #                                      i.save()
     return all_recipes
 
 
