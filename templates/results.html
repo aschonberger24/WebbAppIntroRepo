@@ -7,16 +7,17 @@
     <label for="ingredients">Write your ingredients from your pantry</label><br>
     <input name="form_submitted" value="1" type="hidden">
     <input name="update" value="get recipes" type="submit">
+</form>
 
-
+<form action="{% url 'selected_recipe' %}" method="get">
 <table>
     <tr>
         <th>Your chosen recipes are </th>
     </tr>
     {% for c in selected_recipes %}
     <tr>
-    <td>  {{c.title}}</td><td><input type="submit" name="detail" value = "{{c.title}}"></td>
-        <td>  {{c.instructions}}</td>
+        <td>  {{c.title}}</td><td><button type="submit" name="detail" value = "{{c.id_num}}">{{c.title}}</button></td>
+
     {% endfor %}
  <tr>
         <th>Recipe </th>
@@ -28,6 +29,7 @@
 
 </table>
 </form>
+
 
 </body>
 </html>

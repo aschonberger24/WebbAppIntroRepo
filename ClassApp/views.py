@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from ClassApp.models import AccountHolder
+from ClassApp.models import AccountHolder, Recipe
 from django.contrib.auth.forms import UserCreationForm
 
 from ClassApp.support_functions import import_from_menu, get_recipe_options
@@ -41,7 +41,7 @@ def results(request):
     # tester = ['hello', 'strawberry']
     try:
         choice = request.GET['selection']
-        #recipe_instructions = requests.GET['Detail']
+        #recipe_instructions = request.GET['detail']
         #print(recipe_instructions)
         #choice = [choice]
         print(choice)
@@ -90,6 +90,9 @@ def home_view(request):
 
 def selected_recipe(request):
     selected_data = dict()
+    id_num = request.GET['detail']
+    recipe = Recipe.objects.filter(id_num=id_num)[0]
+    selected_data['recipe'] = recipe
     return render(request, "selected_recipe.html", context=selected_data)
 
 
