@@ -4,19 +4,19 @@
 
 <form action="" method="get">
     <input type="text" id="ingredients" name="selection">
-    <label for="ingredients">Update the list of ingredients</label><br>
+    <label for="ingredients">Write your ingredients from your pantry</label><br>
     <input name="form_submitted" value="1" type="hidden">
-    <input name="update" value="Do selected action" type="submit">
-</form>
+    <input name="update" value="get recipes" type="submit">
 
 
 <table>
     <tr>
-        <th>Ingredients </th>
+        <th>Your chosen recipes are </th>
     </tr>
-    {% for c in selection %}
+    {% for c in selected_recipes %}
     <tr>
-    <td> Your pantry ingredients are {{c}}</td>
+    <td>  {{c.title}}</td><td><input type="submit" name="detail" value = "{{c.title}}"></td>
+        <td>  {{c.instructions}}</td>
     {% endfor %}
  <tr>
         <th>Recipe </th>
@@ -27,6 +27,8 @@
     {% endfor %}
 
 </table>
+</form>
+
 </body>
 </html>
 

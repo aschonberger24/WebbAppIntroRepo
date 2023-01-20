@@ -3,8 +3,9 @@ from ClassApp.models import Recipe
 
 def import_from_menu():
     import csv
-    with open('/Users/Avery/Desktop/S2-Spring_2023/Webb_Apps_Programming/NewApp/static/ClassApp/dataframe_upload.csv',
+    with open('/Users/tanmayebhatia/Desktop/Columbia/Web_App_programming_S2023/Pycharm_Projects/WebbAppIntroRepo/static/ClassApp/dataframe_upload.csv',
               'r') as csvfile:
+        #/Users/tanmayebhatia/Desktop/Columbia/Web_App_programming_S2023/Pycharm_Projects/WebbAppIntroRepo
         reader = csv.reader(csvfile)
         all_recipes = []
         # this_recipe = Recipe()
@@ -16,9 +17,10 @@ def import_from_menu():
             all_recipes.append(this_recipe)
         print(this_recipe)
         # to save to database: this_recipe.save()
-    # to save entire list to database: for i in all_recipes:
-    #                                      i.save()
-    return all_recipes[1:]
+    #to save entire list to database:
+    #for i in all_recipes[1:12000]:
+        #i.save()
+    return all_recipes[5:]
 
 
 def get_recipe_options(input_ingredients, all_recipes):
@@ -41,11 +43,11 @@ def get_recipe_options(input_ingredients, all_recipes):
                     ingredient_score += 1                   # increment the ingredient score
                     registered_ingredients.append(real_ingredient)  # add the ingredient to registered ingredients list
                     appended_flag = 1                       # raise the appended flag if the ingredient is there
-            print(appended_flag)
+            #print(appended_flag)
 
             if appended_flag == 0:                          # if appended flag is lowered, ingredient is not available
                 raw_ingredient = one_ingredient.split()  # raw_ingredient is split name of the needed ingredient
-                print(raw_ingredient)
+                #print(raw_ingredient)
                 if len(raw_ingredient) != 0:
                     if raw_ingredient[len(raw_ingredient) - 1] in exempt_ingredients:  # if the ingredient is exempt
                         ingredient_score += 1                   # increment the ingredient score
@@ -53,7 +55,7 @@ def get_recipe_options(input_ingredients, all_recipes):
         # CHECK THAT USER HAS INGREDIENTS
         if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
             recipe_list.append(one_recipe)  # add the recipe to the list of approved recipes
-
+    print("THIS IS THE COUNT "+str(len(recipe_list)))
     return recipe_list
 
 
@@ -98,3 +100,5 @@ def add_currencies(currency_list):
             c.name = currency_name
             print(c) #c.save()  #To test out the code, replace this by print(c)
     return"""
+
+

@@ -53,11 +53,12 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     id_num = models.IntegerField(default=0)
     title = models.CharField(max_length=250)
-    ingredients = models.CharField(max_length=1000, default=None)  # ManyToManyField(Ingredient)
+    ingredients = models.CharField(max_length=5000, default=None)  # ManyToManyField(Ingredient)
     # def __init__(self):
     #     self.ingredients = ()
     instructions = models.TextField()
     image = models.CharField(max_length=500)
+
 
     def __repr__(self):
         return str(self.id_num) + " " + self.title + " " + str(

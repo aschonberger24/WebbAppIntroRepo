@@ -39,25 +39,24 @@ def results(request):
     choice = 'NONE'
     # adding another comment
     # tester = ['hello', 'strawberry']
-
     try:
         choice = request.GET['selection']
-        choice = [choice]
-
+        #recipe_instructions = requests.GET['Detail']
+        #print(recipe_instructions)
+        #choice = [choice]
+        print(choice)
         recipe_list = import_from_menu()
+        #print(recipe_list)
         selected_recipes = get_recipe_options(choice, recipe_list)
         data['selection'] = choice
         data['selected_recipes']=selected_recipes
         print(data['selection'])
-        print(data['selected_recipes'])
+        #print(data['selected_recipes'])
         # Printing this to display in console that we can access form data
         print(choice)
-        # Simple logic to show we can create logic with our form data
-        if choice[0] == tester[0]:
-            print("Yes all ingredients here")
-        else:
-            print('Need more ingredients')
-        return render(request, "results.html", context=data)
+        print(request.GET['detail'])
+        #return render(request, "results.html", context=data)
+        return HttpResponseRedirect(reverse('results.html', context = data))
     except:
         pass
     return render(request, "results.html", context=data)
