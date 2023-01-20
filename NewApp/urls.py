@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
 from ClassApp import views
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path("", views.results, name="results"),
     path("", views.selected_recipe, name="selected_recipe"),
     path('maintenance', views.maintenance, name='maintenance'),
+    path('register', views.register_new_user, name="register_user"),
 ]

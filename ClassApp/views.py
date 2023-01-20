@@ -1,7 +1,9 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from ClassApp.models import Recipe
+from ClassApp.models import AccountHolder
 from ClassApp.support_functions import import_from_menu, get_recipe_options
 
 
@@ -39,19 +41,19 @@ def results(request):
     # tester = ['hello', 'strawberry']
 
     try:
-        choice = request.GET['selection']
-        choice = [choice]
+        choice = list(request.GET['selection'])
+        # choice = [choice]
 
         recipe_list = import_from_menu()
         selected_recipes = get_recipe_options(choice, recipe_list)
         data['selection'] = choice
-        data['selected_recipes']=selected_recipes
+        data['selected_recipes'] = selected_recipes
         print(data['selection'])
         print(data['selected_recipes'])
         # Printing this to display in console that we can access form data
         print(choice)
         # Simple logic to show we can create logic with our form data
-        if choice[0] == tester[0]:
+        if not selected_recipes.isempty():
             print("Yes all ingredients here")
         else:
             print('Need more ingredients')
@@ -104,3 +106,16 @@ def maintenance(request):
     return render(request, "maintenance.html", context=maintenance_data)
 
 
+def register_new_user(request):
+    context = dict()
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+        new_user = form.save()
+        dob = request.POST["dob"]
+        acct_holder = AccountHolder(user=new_user,date_of_birth=dob)
+        acct_holder.save()
+        return render(request,"home.html",context=dict())
+    else:
+        form = UserCreationForm()
+        context['form'] = form
+        return render(request, "registration/register.html", context)

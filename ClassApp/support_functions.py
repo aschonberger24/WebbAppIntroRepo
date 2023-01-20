@@ -7,15 +7,13 @@ def import_from_menu():
               'r') as csvfile:
         reader = csv.reader(csvfile)
         all_recipes = []
-        this_recipe = Recipe()
+        #this_recipe = Recipe()
         for row in reader:
-            this_recipe.id_num = row[0]
-            this_recipe.title = row[1]
-            this_recipe.ingredients = row[2]
-            this_recipe.instructions = row[3]
-            this_recipe.image = row[4]
+            this_recipe = Recipe(id_num=row[0], title=row[1], ingredients=';;'.join(row[2].split(', ')), instructions=row[3], image=row[4])
             all_recipes.append(this_recipe)
-        # all_recipes.save()
+        print(this_recipe)
+        # to save to database: this_recipe.save()
+    # to save entire list to database: for i in all_recipes:   i.save()
     return all_recipes
 
 
@@ -25,10 +23,10 @@ def get_recipe_options(input_ingredients, all_recipes):
     recipe_list = list()
     # suggested_list = list()
     for one_recipe in all_recipes:                          # "one_recipe" is each recipe
+        ingredient_list = one_recipe.ingredients.split(';;')  # split the ingredients string at ;;
         ingredient_score = 0                                # initialize ingredient score
         registered_ingredients = []                         # initialize list of registered ingredients
-        for one_ingredient in one_recipe.ingredients:       # iterate through all ingredients in the recipe
-
+        for one_ingredient in ingredient_list:              # iterate through all ingredients in the recipe
             appended_flag = 0                               # lower the appended flag
             # DETERMINE IF USER HAS ALL THE INGREDIENTS FOR A RECIPE
             for user_ingredient in user_ingredients:
