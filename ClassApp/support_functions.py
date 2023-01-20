@@ -7,28 +7,32 @@ def import_from_menu():
               'r') as csvfile:
         reader = csv.reader(csvfile)
         all_recipes = []
-        #this_recipe = Recipe()
+        # this_recipe = Recipe()
         for row in reader:
-            this_recipe = Recipe(id_num=row[0], title=row[1], ingredients=';;'.join(row[2].split(', ')), instructions=row[3], image=row[4])
+            this_recipe = Recipe(id_num=row[0], title=row[1], ingredients=';;'.join(row[2].split("', '")),
+                                 instructions=row[3], image=row[4])
+            this_recipe.ingredients = this_recipe.ingredients.replace("['", '')
+            this_recipe.ingredients = this_recipe.ingredients.replace("']", '')
             all_recipes.append(this_recipe)
         print(this_recipe)
         # to save to database: this_recipe.save()
     # to save entire list to database: for i in all_recipes:
     #                                      i.save()
-    return all_recipes
+    return all_recipes[1:]
 
 
 def get_recipe_options(input_ingredients, all_recipes):
-    user_ingredients = input_ingredients.split(', ')
+    user_ingredients = input_ingredients.lower().split(', ')
     exempt_ingredients = get_exempt_ingredients()
     recipe_list = list()
     # suggested_list = list()
     for one_recipe in all_recipes:                          # "one_recipe" is each recipe
-        ingredient_list = one_recipe.ingredients.split(';;')  # split the ingredients string at ;;
+        ingredient_list = one_recipe.ingredients.lower().split(';;')  # split the ingredients string at ;;
         ingredient_score = 0                                # initialize ingredient score
         registered_ingredients = []                         # initialize list of registered ingredients
         for one_ingredient in ingredient_list:              # iterate through all ingredients in the recipe
             appended_flag = 0                               # lower the appended flag
+
             # DETERMINE IF USER HAS ALL THE INGREDIENTS FOR A RECIPE
             for user_ingredient in user_ingredients:
                 parts = user_ingredient.split()             # separate user ingredients into words
@@ -37,25 +41,29 @@ def get_recipe_options(input_ingredients, all_recipes):
                     ingredient_score += 1                   # increment the ingredient score
                     registered_ingredients.append(real_ingredient)  # add the ingredient to registered ingredients list
                     appended_flag = 1                       # raise the appended flag if the ingredient is there
+            print(appended_flag)
 
             if appended_flag == 0:                          # if appended flag is lowered, ingredient is not available
-                raw_ingredient = one_ingredient.split()     # raw_ingredient is split name of the needed ingredient
-                if raw_ingredient[len(raw_ingredient) - 1] in exempt_ingredients:  # if the ingredient is exempt
-                    ingredient_score += 1                   # increment the ingredient score
+                raw_ingredient = one_ingredient.split()  # raw_ingredient is split name of the needed ingredient
+                print(raw_ingredient)
+                if len(raw_ingredient) != 0:
+                    if raw_ingredient[len(raw_ingredient) - 1] in exempt_ingredients:  # if the ingredient is exempt
+                        ingredient_score += 1                   # increment the ingredient score
 
         # CHECK THAT USER HAS INGREDIENTS
-        if ingredient_score == len(one_recipe.ingredients):  # if the ingredient score is the number of ingredients
+        if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
             recipe_list.append(one_recipe)  # add the recipe to the list of approved recipes
 
     return recipe_list
+
 
 
 def get_exempt_ingredients():
     exempt_ingredients_list = ['salt', 'pepper', 'spray', 'basil', 'oil', 'butter', 'vinegar', 'sugar', 'flour']
     return exempt_ingredients_list
 
-
-"""from ClassApp.models import Currency
+"""
+from ClassApp.models import Currency
 
 def get_currency_list():
     currency_list = list()

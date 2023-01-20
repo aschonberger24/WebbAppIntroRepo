@@ -53,7 +53,9 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     id_num = models.IntegerField(default=0)
     title = models.CharField(max_length=250)
-    ingredients = models.CharField(max_length=1000, default=None)
+    ingredients = models.CharField(max_length=1000, default=None)  # ManyToManyField(Ingredient)
+    # def __init__(self):
+    #     self.ingredients = ()
     instructions = models.TextField()
     image = models.CharField(max_length=500)
 
@@ -68,7 +70,7 @@ class Recipe(models.Model):
 
 class AccountHolder(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(default=None)
     recipes_viewed = models.ManyToManyField(Recipe)
 
     def __str__(self):
