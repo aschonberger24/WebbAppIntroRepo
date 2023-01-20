@@ -1,9 +1,10 @@
 from ClassApp.models import Recipe
+from NewApp.settings import BASE_DIR
 
 
 def import_from_menu():
     import csv
-    with open('/Users/tanmayebhatia/Desktop/Columbia/Web_App_programming_S2023/Pycharm_Projects/WebbAppIntroRepo/static/ClassApp/dataframe_upload.csv',
+    with open(str(BASE_DIR)+'/static/ClassApp/dataframe_upload.csv',
               'r') as csvfile:
         #/Users/tanmayebhatia/Desktop/Columbia/Web_App_programming_S2023/Pycharm_Projects/WebbAppIntroRepo
         reader = csv.reader(csvfile)
@@ -18,8 +19,8 @@ def import_from_menu():
         print(this_recipe)
         # to save to database: this_recipe.save()
     #to save entire list to database:
-    for i in all_recipes[1:12000]:
-        i.save()
+    #for i in all_recipes[1:12000]:
+        #i.save()
     return all_recipes[5:]
 
 
