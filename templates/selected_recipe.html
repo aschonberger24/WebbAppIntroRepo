@@ -2,9 +2,23 @@
 {% block content %}
 {% load static %}
 
+    <body id="background-image" style="background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('{% static "ClassApp/ingredients.jpg"%}')";>
 
-    <h1>{{recipe.title}}</h1
-    <h2>{{recipe.ingredients}}</h2>
-    <h2>{{recipe.instructions}}</h2>
+    <div class="selection-outer">
+<div class="selection-all-container">
+    <div class="selection-container">
+        <div class="selection-image">
+            <img style="max-width: 100%" src="{%  static 'ClassApp/chicken.png' %}">
+        </div>
+        <div class="selection-text">
+            <h1>{{recipe.title}}</h1>
+        </div>
+    </div>
+    <h1 style="font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: 17px;">Ingredients:</h1>
+    <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 17px;">{{recipe.ingredients}}</p>
 
+    <h1 style="font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: 17px;">Instructions:</h1>
+    <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 17px;">{{recipe.instructions}}</p>
+</div>
+        </div>
 {% endblock %}

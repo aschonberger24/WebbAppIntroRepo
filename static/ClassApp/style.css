@@ -157,3 +157,30 @@ table.center{
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
+
+.selection-container {
+  display: flex;
+  align-items: center;
+
+}
+.selection-outer{
+    padding: 50px;
+}
+
+.selection-all-container{
+    background-color: white;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.selection-image{
+    width: 75px;
+}
+
+.selection-text {
+  font-size: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    padding-left: 15px;
+}

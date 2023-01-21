@@ -14,7 +14,7 @@
 <body>
 
 <ul>
-  <li><a style="float: left; font-size:0" href="{% url 'home' %}"><img style="height: 25px" src="{%  static 'ClassApp/cheflogotsp.png' %}"></a></li>
+  <li><a style="float: left; font-size:0" href="{% url 'results' %}"><img style="height: 25px" src="{%  static 'ClassApp/cheflogotsp.png' %}"></a></li>
       {% if user.username %}
           <li><a style="float: right; line-height: 25px;" href="{% url 'logout' %}">Logout</a></li>
       {% else %}
@@ -29,8 +29,5 @@
 {% block content %}
     <!-- PageContent -->
 {% endblock %}
-<div id="footer">
-        ©2023 Pantry Chef. All Rights Reserved
-    </div>
 </body>
 </html>
