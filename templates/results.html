@@ -16,13 +16,13 @@
 
 
 <form action="{% url 'selected_recipe' %}" method="get">
-<table class="results-table">
+<table class="center">
     <tr>
         <th>Your chosen recipes are </th>
     </tr>
     {% for c in selected_recipes %}
     <tr class="recipe-row">
-        <td>  {{c.title}}</td><td><button type="submit" name="detail" value = "{{c.id_num}}">{{c.title}}</button></td>
+        <td><button type="submit" name="detail" value = "{{c.id_num}}">{{c.title}}</button></td>
 
     {% endfor %}
  <tr>

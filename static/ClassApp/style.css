@@ -149,11 +149,11 @@ li a.active {
   border-color: rgba(38, 70, 83, 0.8);
 }
 
-.results-table{
-    text-align: left
+table.center{
+    text-align: left;
   margin-left: auto;
   margin-right: auto;
-}
-.recipe-row{
-      border-bottom: 1px solid #ddd;
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
