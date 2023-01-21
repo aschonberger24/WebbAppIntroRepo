@@ -1,5 +1,5 @@
 from ClassApp.models import Recipe
-from NewApp.settings import BASE_DIR
+from NewApp.settings import BASE_DIR, DATA_ADDED
 
 
 def import_from_menu():
@@ -28,6 +28,11 @@ def get_recipe_options(input_ingredients, all_recipes):
     user_ingredients = input_ingredients.lower().split(', ')
     exempt_ingredients = get_exempt_ingredients()
     recipe_list = list()
+    
+    #LOADING DATA, should run only once
+    if DATA_ADDED = "FALSE":
+        import_from_menu()
+    
     # suggested_list = list()
     for one_recipe in all_recipes:                          # "one_recipe" is each recipe
         ingredient_list = one_recipe.ingredients.lower().split(';;')  # split the ingredients string at ;;
