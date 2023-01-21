@@ -5,6 +5,7 @@ from ClassApp.models import AccountHolder, Recipe
 from django.contrib.auth.forms import UserCreationForm
 
 from ClassApp.support_functions import import_from_menu, get_recipe_options
+from ClassApp.models import Recipe
 
 
 # Create your views here.
@@ -45,7 +46,7 @@ def results(request):
         #print(recipe_instructions)
         #choice = [choice]
         print(choice)
-        recipe_list = import_from_menu()
+        recipe_list = Recipe.objects.all()
         #print(recipe_list)
         selected_recipes = get_recipe_options(choice, recipe_list)
         data['selection'] = choice

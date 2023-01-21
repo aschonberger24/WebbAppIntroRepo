@@ -102,7 +102,13 @@ li a.active {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: center;
+}
+
+#ingredients{
+    width: 500px;
+    height: 50px;
+    border-radius: 1rem;
 }
 
 
@@ -111,4 +117,43 @@ li a.active {
     background-repeat: no-repeat;
     background-position: top;
     background-attachment: fixed;
+}
+
+.home-button {
+  appearance: button;
+  width: 110px;
+  height: 50px;
+  background-color: #264653;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+  border: 1px solid #264653;
+  border-radius: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,rgba(46, 54, 80, 0.075) 0 1px 1px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.home-button:hover {
+  background-color: rgba(38, 70, 83, 0.8);
+  border-color: rgba(38, 70, 83, 0.8);
+}
+
+.results-table{
+    text-align: left
+  margin-left: auto;
+  margin-right: auto;
+}
+.recipe-row{
+      border-bottom: 1px solid #ddd;
 }

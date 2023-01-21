@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Recipe</h1>
+{% load static %}
 
-<form action="" method="get">
-    <input type="text" id="ingredients" name="selection">
-    <label for="ingredients">Write your ingredients from your pantry</label><br>
-    <input name="form_submitted" value="1" type="hidden">
-    <input name="update" value="get recipes" type="submit">
+<body id="background-image" style="background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('{% static "ClassApp/ingredients.jpg"%}')";>
+
+<h2 style="font-family: 'Open Sans', sans-serif; font-weight: 600; text-align: center">What ingredients are in your pantry?</h2>
+
+<div class="form-group">
+<form class="form-inline" method="get">
+<input type="text" id="ingredients" name="selection" placeholder="  Enter ingredients in list format (chicken, rice, ...)">
+<input type="submit" class="home-button" name="update" value="get recipes"></input>
+        <input name="form_submitted" value="1" type="hidden">
 </form>
+</div>
+
 
 <form action="{% url 'selected_recipe' %}" method="get">
-<table>
+<table class="results-table">
     <tr>
         <th>Your chosen recipes are </th>
     </tr>
     {% for c in selected_recipes %}
-    <tr>
+    <tr class="recipe-row">
         <td>  {{c.title}}</td><td><button type="submit" name="detail" value = "{{c.id_num}}">{{c.title}}</button></td>
 
     {% endfor %}

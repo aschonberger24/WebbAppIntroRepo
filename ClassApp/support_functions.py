@@ -19,8 +19,9 @@ def import_from_menu():
         print(this_recipe)
         # to save to database: this_recipe.save()
     #to save entire list to database:
-    for i in all_recipes[1:12000]:
-        i.save()
+    if DATA_ADDED = "FALSE":
+        for i in all_recipes[1:12000]:
+            i.save()
     return all_recipes[5:]
 
 
@@ -64,10 +65,6 @@ def get_recipe_options(input_ingredients, all_recipes):
         if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
             recipe_list.append(one_recipe)  # add the recipe to the list of approved recipes
     print("THIS IS THE COUNT "+str(len(recipe_list)))
-    
-    #LOADING DATA, should run only once
-    if DATA_ADDED == "FALSE":
-        import_from_menu()
 
     return recipe_list
 
