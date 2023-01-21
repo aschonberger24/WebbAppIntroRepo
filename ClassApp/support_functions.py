@@ -65,6 +65,9 @@ def get_recipe_options(input_ingredients, all_recipes):
         if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
             recipe_list.append(one_recipe)  # add the recipe to the list of approved recipes
     print("THIS IS THE COUNT "+str(len(recipe_list)))
+    
+    if DATA_ADDED == "FALSE":
+        import_from_menu()
 
     return recipe_list
 
