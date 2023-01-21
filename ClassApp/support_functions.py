@@ -29,9 +29,6 @@ def get_recipe_options(input_ingredients, all_recipes):
     exempt_ingredients = get_exempt_ingredients()
     recipe_list = list()
     
-    #LOADING DATA, should run only once
-    if DATA_ADDED == "FALSE":
-        import_from_menu()
     
     # suggested_list = list()
     for one_recipe in all_recipes:                          # "one_recipe" is each recipe
@@ -62,6 +59,11 @@ def get_recipe_options(input_ingredients, all_recipes):
         if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
             recipe_list.append(one_recipe)  # add the recipe to the list of approved recipes
     print("THIS IS THE COUNT "+str(len(recipe_list)))
+    
+    #LOADING DATA, should run only once
+    if DATA_ADDED == "FALSE":
+        import_from_menu()
+
     return recipe_list
 
 
