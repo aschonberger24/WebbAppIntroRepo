@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-=mivu#a51f9c=7#$i(bbw2lx0$l^ptj!c+$lp9z5igndfjz1vf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["webappprogrammingpractice.onrender.com", '127.0.0.1']
+ALLOWED_HOSTS = ["webappprogrammingpractice.onrender.com", '127.0.0.1', 'chefspantry.onrender.com/']
 
 
 # Application definition
