@@ -1,5 +1,5 @@
 from ClassApp.models import Recipe
-from NewApp.settings import BASE_DIR
+from NewApp.settings import BASE_DIR, DATA_ADDED
 
 
 def import_from_menu():
@@ -19,8 +19,8 @@ def import_from_menu():
         print(this_recipe)
         # to save to database: this_recipe.save()
     #to save entire list to database:
-    #for i in all_recipes[1:12000]:
-        #i.save()
+    for i in all_recipes[1:12000]:
+        i.save()
     return all_recipes[5:]
 
 
@@ -28,6 +28,8 @@ def get_recipe_options(input_ingredients, all_recipes):
     user_ingredients = input_ingredients.lower().split(', ')
     exempt_ingredients = get_exempt_ingredients()
     recipe_list = list()
+    
+    
     # suggested_list = list()
     for one_recipe in all_recipes:                          # "one_recipe" is each recipe
         ingredient_list = one_recipe.ingredients.lower().split(';;')  # split the ingredients string at ;;
@@ -62,6 +64,11 @@ def get_recipe_options(input_ingredients, all_recipes):
         if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
             recipe_list.append(one_recipe)  # add the recipe to the list of approved recipes
     print("THIS IS THE COUNT "+str(len(recipe_list)))
+    
+    #LOADING DATA, should run only once
+    if DATA_ADDED == "FALSE":
+        import_from_menu()
+
     return recipe_list
 
 
