@@ -19,8 +19,8 @@ def import_from_menu():
         print(this_recipe)
         # to save to database: this_recipe.save()
     #to save entire list to database:
-    #for i in all_recipes[1:12000]:
-        #i.save()
+    for i in all_recipes[1:12000]:
+        i.save()
     return all_recipes[5:]
 
 
