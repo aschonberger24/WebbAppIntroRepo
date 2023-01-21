@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-
 <head>
     <meta charset:"UTF-8">
-    <title>Chefs Pantry</title>
+    <title>Pantry</title>
+            <link href='//fonts.googleapis.com/css?family=Open+Sans:400,400i,800, 600, 500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'ClassApp/style.css' %}">
-
-<div class="topnav">
-  <a class="active" href="/">Home</a>
-  <a href="#about">Login</a>
-</div>
-    <span style="float:right;">
-    {% if user.username %}
-        <span class="large-font">Hello {{ user.username }}!</span><br>
-        <a href="{% url 'logout' %}"><button>logout</button></a>
-    {% else %}
-        <span class="large-font">Hello Guest User!</span><br>
-        <a href="{% url 'login' %}"><button>login</button></a>/
-        <a href="{% url 'register_user' %}"><button>register</button></a>
-    {% endif %}
-</span>
 
 </head>
 
 <body>
+
+<ul>
+  <li><a style="float: left; font-size:0" href="{% url 'home' %}"><img style="height: 25px" src="{%  static 'ClassApp/cheflogotsp.png' %}"></a></li>
+      {% if user.username %}
+          <li><a style="float: right; line-height: 25px;" href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+          <li><a style="float: right; line-height: 25px;" href="{% url 'login' %}">Login</a></li>
+          <li><a style="float: right; line-height: 25px;" href="{% url 'register_user' %}">Register</a></li>
+      {% endif %}
+</ul>
+
+
+
+
 {% block content %}
     <!-- PageContent -->
 {% endblock %}

@@ -85,7 +85,7 @@ WSGI_APPLICATION = "NewApp.wsgi.application"
 }"""
 
 DATABASES = {
-        'default': dj_database_url.config(default='postgresql://postgres:postgres@localhost:5432/webappprogramingpractice',
+        'default': dj_database_url.config(default='postgresql://postgres:postgres@localhost:5432/Avery',
                                           conn_max_age=600)}
 
 

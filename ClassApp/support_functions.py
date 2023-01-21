@@ -4,8 +4,8 @@ from NewApp.settings import BASE_DIR
 
 def import_from_menu():
     import csv
-    with open(str(BASE_DIR)+'/static/ClassApp/dataframe_upload.csv',
-              'r') as csvfile:
+    # with open('/Users/Avery/Desktop/S2-Spring_2023/Webb_Apps_Programming/NewApp/static/ClassApp/dataframe_upload.csv',
+    with open(str(BASE_DIR)+'/static/ClassApp/dataframe_upload.csv', 'r') as csvfile:
         #/Users/tanmayebhatia/Desktop/Columbia/Web_App_programming_S2023/Pycharm_Projects/WebbAppIntroRepo
         reader = csv.reader(csvfile)
         all_recipes = []
@@ -38,20 +38,25 @@ def get_recipe_options(input_ingredients, all_recipes):
 
             # DETERMINE IF USER HAS ALL THE INGREDIENTS FOR A RECIPE
             for user_ingredient in user_ingredients:
-                parts = user_ingredient.split()             # separate user ingredients into words
-                real_ingredient = parts[len(parts) - 1]     # ingredient name is last part of user ingredient
-                if real_ingredient in one_ingredient:       # if the user ingredient is a recipe ingredient
+                # parts = user_ingredient.split()             # separate user ingredients into words
+                # real_ingredient = parts[len(parts) - 1]     # ingredient name is last part of user ingredient
+
+                if user_ingredient in one_ingredient:       # if the user ingredient is a recipe ingredient
                     ingredient_score += 1                   # increment the ingredient score
-                    registered_ingredients.append(real_ingredient)  # add the ingredient to registered ingredients list
+                    registered_ingredients.append(user_ingredient)  # add the ingredient to registered ingredients list
                     appended_flag = 1                       # raise the appended flag if the ingredient is there
-            #print(appended_flag)
+                    # print(user_ingredient)
 
             if appended_flag == 0:                          # if appended flag is lowered, ingredient is not available
                 raw_ingredient = one_ingredient.split()  # raw_ingredient is split name of the needed ingredient
-                #print(raw_ingredient)
                 if len(raw_ingredient) != 0:
-                    if raw_ingredient[len(raw_ingredient) - 1] in exempt_ingredients:  # if the ingredient is exempt
-                        ingredient_score += 1                   # increment the ingredient score
+                    # print(';' + raw_ingredient[len(raw_ingredient) - 1] + ';')
+                    for i in raw_ingredient:
+                        if i in exempt_ingredients:
+                            ingredient_score += 1
+                            # print(i)
+                    # if raw_ingredient[len(raw_ingredient) - 1] in exempt_ingredients:  # if the ingredient is exempt
+                        # ingredient_score += 1                   # increment the ingredient score
 
         # CHECK THAT USER HAS INGREDIENTS
         if ingredient_score == len(ingredient_list):  # if the ingredient score is the number of ingredients
@@ -60,9 +65,9 @@ def get_recipe_options(input_ingredients, all_recipes):
     return recipe_list
 
 
-
 def get_exempt_ingredients():
-    exempt_ingredients_list = ['salt', 'pepper', 'spray', 'basil', 'oil', 'butter', 'vinegar', 'sugar', 'flour']
+    exempt_ingredients_list = ['salt', 'pepper', 'spray', 'basil', 'oil', 'butter', 'vinegar', 'sugar', 'flour',
+                               'garlic']
     return exempt_ingredients_list
 
 """

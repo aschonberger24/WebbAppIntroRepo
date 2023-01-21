@@ -1,29 +1,31 @@
 /* Add a black background color to the top navigation */
-.topnav {
-  background-color: #333;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
+
+li a {
+  display: block;
+  color: #264653;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-family: 'Open Sans', sans-serif;
+
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #F5F5F5;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+li a.active {
+  background-color: #F5F5F5;
 }
 
 #footer{ /* use with id="footer"*/
@@ -33,15 +35,80 @@
     padding: 2em 0.25em;
     text-align: center;
     font-size: medium;
+    position: absolute;
+    bottom: 0;
 }
 
-.large-font { /* use with class="large-font" */
-   font-size: large;
-   color: blue;
+
+.login-form {
+      background-color: #white;
 }
 
-.lobster {
-    color: darkolivegreen;
-    font-family: 'lobster';
-    font-size: 36px;
+.col-sm-4 img {
+    width: 100%
+}
+
+.login-label {
+  font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.8);
+  padding: 50px 0px;
+}
+
+.login-entry {
+    padding: 75px 0px;
+}
+
+.button {
+  appearance: button;
+  background-color: #264653;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+  border: 1px solid #264653;
+  border-radius: 1rem;
+  box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,rgba(46, 54, 80, 0.075) 0 1px 1px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: 10px;
+  padding: .5rem 1rem;
+  text-align: center;
+  text-transform: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button:hover {
+  background-color: rgba(38, 70, 83, 0.8);
+  border-color: rgba(38, 70, 83, 0.8);
+}
+
+.form-group
+{
+    display: block;
+    text-align: center;
+}
+
+.form-inline
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+
+#background-image {
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
 }

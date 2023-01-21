@@ -56,7 +56,7 @@ def results(request):
         print(choice)
         print(request.GET['detail'])
         #return render(request, "results.html", context=data)
-        return HttpResponseRedirect(reverse('results.html', context = data))
+        return HttpResponseRedirect(reverse('results.html', context=data))
     except:
         pass
     return render(request, "results.html", context=data)

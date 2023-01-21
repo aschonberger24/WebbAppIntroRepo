@@ -1,24 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
 
-<h3>Login to Chefs Choice</h3>
+<div class="row">
+  <div class="col-sm-4">
+      <img src="{%  static 'ClassApp/cooking.jpg' %}">
+  </div>
+  <div class="col-sm-8">
+      <h3 style="font-family: 'Open Sans', sans-serif; font-weight: 800">Welcome Back!</h3>
+      <p style="font-family: 'Open Sans', sans-serif; font-weight: 400">Log into your account</p>
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
-
     {% else %}
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            <table>
-                <tr>
-                    <td>{{ form.username.label_tag }}</td>
-                    <td>{{ form.username }}</td>
-                </tr>
-                    <td>{{ form.password.label_tag }}</td>
-                    <td>{{ form.password }}</td>
-                </tr>
-            </table>
-            <input type="submit" value="login">
+            <a class="login-label">{{ form.username.label_tag }}</a><br>
+            <a class="login-entry">{{ form.username }}</a><br>
+            <a class="login-label">{{ form.password.label_tag }}</a><br>
+            <a class="login-entry">{{ form.password }}</a><br>
+            <input class="button" type="submit" value="Login">
             <input type="hidden" value="{{ next }}" name="next">
         </form>
-{% endif %}
+          </div>
+    {% endif %}
+
 {% endblock %}

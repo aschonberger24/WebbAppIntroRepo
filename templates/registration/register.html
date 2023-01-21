@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h3>Create an account</h3>
-    <h2>Register</h2>
-    <form method="post">
+{% load static %}
+
+<div class="row">
+  <div class="col-sm-4">
+      <img src="{%  static 'ClassApp/cooking.jpg' %}">
+  </div>
+  <div class="col-sm-8">
+      <h3 style="font-family: 'Open Sans', sans-serif; font-weight: 800">Welcome to Chef's Pantry!</h3>
+      <p style="font-family: 'Open Sans', sans-serif; font-weight: 400">Register your account</p>
+  <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        Please enter your email<input type="email" name="email"><br>
-<button type="submit">Register</button>
+<input class="button" type="submit" value="Register">
+
 </form>
+
+
 {% endblock %}
