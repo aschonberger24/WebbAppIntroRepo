@@ -30,7 +30,7 @@ def get_recipe_options(input_ingredients, all_recipes):
     recipe_list = list()
     
     #LOADING DATA, should run only once
-    if DATA_ADDED = "FALSE":
+    if DATA_ADDED == "FALSE":
         import_from_menu()
     
     # suggested_list = list()
