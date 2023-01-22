@@ -115,7 +115,7 @@ def register_new_user(request):
         new_user = form.save()
         acct_holder = AccountHolder(user=new_user)
         acct_holder.save()
-        return render(request,"home.html",context=dict())
+        return render(request,"results.html",context=dict())
     else:
         form = UserCreationForm()
         context['form'] = form

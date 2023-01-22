@@ -14,7 +14,7 @@
 <body>
 
 <ul>
-  <li><a style="float: left; font-size:0" href="{% url 'results' %}"><img style="height: 25px" src="{%  static 'ClassApp/cheflogotsp.png' %}"></a></li>
+  <li><a style="float: left; font-size:0; height: auto; width: auto;" href="{% url 'results' %}"><img style="height: 25px" src="{%  static 'ClassApp/logolong.png' %}"></a></li>
       {% if user.username %}
           <li><a style="float: right; line-height: 25px;" href="{% url 'logout' %}">Logout</a></li>
       {% else %}

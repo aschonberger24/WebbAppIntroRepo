@@ -71,7 +71,6 @@ class Recipe(models.Model):
 
 class AccountHolder(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_of_birth = models.DateField(default=None)
     recipes_viewed = models.ManyToManyField(Recipe)
 
     def __str__(self):

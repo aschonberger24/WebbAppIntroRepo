@@ -85,7 +85,7 @@ WSGI_APPLICATION = "NewApp.wsgi.application"
 }"""
 
 DATABASES = {
-        'default': dj_database_url.config(default='postgresql://postgres:postgres@localhost:5432/Avery',
+        'default': dj_database_url.config(default='postgresql://postgres:postgres@localhost:5432/rcw2153-webapps1',
                                           conn_max_age=600)}
 
 
@@ -125,7 +125,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/results'
+LOGOUT_REDIRECT_URL = "/results"
 
 #ALWAYS TRUE EXCEPT FIRST TIME
 DATA_ADDED = "TRUE"
