@@ -169,6 +169,8 @@ table.center{
     width: 50%;
     margin-right: auto;
     margin-left: auto;
+      border-radius: 1rem;
+    padding: 8px 8px;
 }
 
 .selection-image{
